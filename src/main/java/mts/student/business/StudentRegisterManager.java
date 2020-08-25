@@ -29,9 +29,7 @@ public class StudentRegisterManager {
 
             "and std.documentNumber = ?8 " +
             "and std.documentDate = ?9 " +
-            "and std.expiredDate is null " +
-            "and u.universityName = ?10 " +
-            "and f.facultyName = ?11 ";
+            "and std.expiredDate is null ";
 //            "and std.faculty = ?11 " + "and std.studentForm = ?12 ";
 
 
@@ -77,33 +75,36 @@ public class StudentRegisterManager {
 
         logger.info("setStudentParam");
 
+        logger.info(String.valueOf(count));
         query.setParameter(count++, request.getFirstName());
-        query.setParameter(count++, request.getLastName());
-        query.setParameter(count++, request.getMiddleName());
-        query.setParameter(count++, request.getDateOfBirth());
-        query.setParameter(count++, request.getPassportSerial());
-        query.setParameter(count++, request.getPassportNumber());
+        logger.info(String.valueOf(count));
+        query.setParameter(count++, request.getSurName());
+        logger.info(String.valueOf(count));
         query.setParameter(count++, request.getPassportDate());
-
+        logger.info(String.valueOf(count));
+        query.setParameter(count++, request.getDateOfBirth());
+        logger.info(String.valueOf(count));
+        query.setParameter(count++, request.getPassportSerial());
+        logger.info(String.valueOf(count));
+        query.setParameter(count++, request.getPassportNumber());
+        logger.info(String.valueOf(count));
+        query.setParameter(count++, request.getPassportDate());
+        logger.info(String.valueOf(count));
         query.setParameter(count++, request.getDocumentNumber());
+        logger.info(String.valueOf(count));
         query.setParameter(count++, request.getDocumentDate());
-        query.setParameter(count++, request.getUniversity());
-        query.setParameter(count++, request.getFaculty());
-
-
 
         logger.info("setStudentParam: "
                 + request.getFirstName() + " "
-                + request.getLastName() + " "
-                + request.getMiddleName() + " "
+                + request.getSurName() + " "
+                + request.getPatronymicName() + " "
                 + request.getDateOfBirth() + " "
                 + request.getPassportSerial() + " "
                 + request.getPassportNumber() + " "
                 + request.getPassportDate() + " "
                 + request.getDocumentNumber() + " "
                 + request.getDocumentDate() + " "
-                + request.getUniversity() + " "
-                + request.getFaculty() + " "
+
         );
 
         return query;

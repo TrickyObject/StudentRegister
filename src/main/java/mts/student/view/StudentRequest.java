@@ -10,34 +10,31 @@ import java.time.LocalDate;
 public class StudentRequest {
 
     private String firstName;
-    private String lastName;
-    private String middleName;
-    @XmlJavaTypeAdapter(LocalDateAdapter.class)
+    private String surName;
+    private String patronymicName;
+//    @XmlJavaTypeAdapter(LocalDateAdapter.class)
     private LocalDate dateOfBirth;
     private String passportNumber;
     private String passportSerial;
-    @XmlJavaTypeAdapter(LocalDateAdapter.class)
+//    @XmlJavaTypeAdapter(LocalDateAdapter.class)
     private LocalDate passportDate;
     private String documentNumber;
-    @XmlJavaTypeAdapter(LocalDateAdapter.class)
+//    @XmlJavaTypeAdapter(LocalDateAdapter.class)
     private LocalDate documentDate;
-    private String university;
-    private String faculty;
+
 
     @Override
     public String toString() {
         return "StudentRequest{" +
                 "firstName='" + firstName + '\'' +
-                ", lastName='" + lastName + '\'' +
-                ", middleName='" + middleName + '\'' +
+                ", surName='" + surName + '\'' +
+                ", patronymicName='" + patronymicName + '\'' +
                 ", dateOfBirth=" + dateOfBirth +
                 ", passportNumber='" + passportNumber + '\'' +
                 ", passportSerial='" + passportSerial + '\'' +
                 ", passportDate=" + passportDate +
                 ", documentNumber='" + documentNumber + '\'' +
                 ", documentDate=" + documentDate +
-                ", university='" + university + '\'' +
-                ", faculty='" + faculty + '\'' +
                 '}';
     }
 
@@ -49,20 +46,20 @@ public class StudentRequest {
         this.firstName = firstName;
     }
 
-    public String getLastName() {
-        return lastName;
+    public String getSurName() {
+        return surName;
     }
 
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
+    public void setSurName(String surName) {
+        this.surName = surName;
     }
 
-    public String getMiddleName() {
-        return middleName;
+    public String getPatronymicName() {
+        return patronymicName;
     }
 
-    public void setMiddleName(String middleName) {
-        this.middleName = middleName;
+    public void setPatronymicName(String patronymicName) {
+        this.patronymicName = patronymicName;
     }
 
     public LocalDate getDateOfBirth() {
@@ -113,19 +110,4 @@ public class StudentRequest {
         this.documentDate = documentDate;
     }
 
-    public String getUniversity() {
-        return university;
-    }
-
-    public void setUniversity(String university) {
-        this.university = university;
-    }
-
-    public String getFaculty() {
-        return faculty;
-    }
-
-    public void setFaculty(String faculty) {
-        this.faculty = faculty;
-    }
 }
