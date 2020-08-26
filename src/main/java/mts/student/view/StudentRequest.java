@@ -1,7 +1,5 @@
 package mts.student.view;
 
-
-import jdk.vm.ci.meta.Local;
 import mts.student.domain.LocalDateAdapter;
 
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
@@ -12,14 +10,14 @@ public class StudentRequest {
     private String firstName;
     private String surName;
     private String patronymicName;
-//    @XmlJavaTypeAdapter(LocalDateAdapter.class)
+    @XmlJavaTypeAdapter(LocalDateAdapter.class)
     private LocalDate dateOfBirth;
     private String passportNumber;
     private String passportSerial;
-//    @XmlJavaTypeAdapter(LocalDateAdapter.class)
+    @XmlJavaTypeAdapter(LocalDateAdapter.class)
     private LocalDate passportDate;
     private String documentNumber;
-//    @XmlJavaTypeAdapter(LocalDateAdapter.class)
+    @XmlJavaTypeAdapter(LocalDateAdapter.class)
     private LocalDate documentDate;
 
 
