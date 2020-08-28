@@ -3,16 +3,20 @@ package mts.student.view;
 
 public class StudentResponse {
 
-    private boolean existing;
+    private boolean studying;
 
-    public boolean isExisting() {
-        return existing;
+    public boolean isStudying() {
+        return studying;
     }
 
-    public void setExisting(boolean existing) {
-        this.existing = existing;
+    public void setStudying(boolean studying) {
+        this.studying = studying;
     }
 
-
-
+    @Override
+    public String toString() {
+        return "StudentResponse{" +
+                "studying=" + studying +
+                '}';
+    }
 }

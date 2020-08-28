@@ -20,16 +20,12 @@ public class StudentRegisterManager {
             "and std.faculty = f.id " +
 
             "and st.firstName = ?1 " +
-            "and st.lastName = ?2 " +
-            "and st.middleName = ?3 " +
+            "and st.surName = ?2 " +
+            "and st.patronymicName = ?3 " +
             "and st.dateOfBirth = ?4 " +
             "and st.passportSerial = ?5 " +
             "and st.passportNumber = ?6 " +
-            "and st.passportDate = ?7 " +
-
-            "and std.documentNumber = ?8 " +
-            "and std.documentDate = ?9 " +
-            "and std.expiredDate is null ";
+            "and st.passportDate = ?7 ";
 //            "and std.faculty = ?11 " + "and std.studentForm = ?12 ";
 
 
@@ -58,12 +54,12 @@ public class StudentRegisterManager {
         logger.info("Result List: " +resultList.toString());
 
         if (resultList.size() == 1) {
-            response.setExisting(true);
+            response.setStudying(true);
         }
 
         em.close();
 
-        logger.info("Ответ: " + response.isExisting());
+        logger.info("Ответ: " + response.isStudying());
 
         return response;
     }
@@ -80,7 +76,7 @@ public class StudentRegisterManager {
         logger.info(String.valueOf(count));
         query.setParameter(count++, request.getSurName());
         logger.info(String.valueOf(count));
-        query.setParameter(count++, request.getPassportDate());
+        query.setParameter(count++, request.getPatronymicName());
         logger.info(String.valueOf(count));
         query.setParameter(count++, request.getDateOfBirth());
         logger.info(String.valueOf(count));
@@ -89,10 +85,10 @@ public class StudentRegisterManager {
         query.setParameter(count++, request.getPassportNumber());
         logger.info(String.valueOf(count));
         query.setParameter(count++, request.getPassportDate());
-        logger.info(String.valueOf(count));
-        query.setParameter(count++, request.getDocumentNumber());
-        logger.info(String.valueOf(count));
-        query.setParameter(count++, request.getDocumentDate());
+//        logger.info(String.valueOf(count));
+//        query.setParameter(count++, request.getDocumentNumber());
+//        logger.info(String.valueOf(count));
+//        query.setParameter(count++, request.getDocumentDate());
 
         logger.info("setStudentParam: "
                 + request.getFirstName() + " "

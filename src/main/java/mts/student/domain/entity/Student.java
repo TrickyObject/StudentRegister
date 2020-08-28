@@ -12,12 +12,12 @@ public class Student {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "student_id")
     private Long studentId;
-    @Column(name = "last_name")
-    private String lastName;
+    @Column(name = "sur_name")
+    private String surName;
     @Column(name = "first_name")
     private String firstName;
-    @Column(name = "middle_name")
-    private String middleName;
+    @Column(name = "patronymic_name")
+    private String patronymicName;
     @Column(name = "date_of_birth")
     private LocalDate dateOfBirth;
     @Column(name = "passport_serial")
@@ -34,9 +34,9 @@ public class Student {
     public String toString() {
         return "Student{" +
                 "studentId=" + studentId +
-                ", lastName='" + lastName + '\'' +
+                ", surName='" + surName + '\'' +
                 ", firstName='" + firstName + '\'' +
-                ", middleName='" + middleName + '\'' +
+                ", patronymicName='" + patronymicName + '\'' +
                 ", dateOfBirth=" + dateOfBirth +
                 ", passportSerial='" + passportSerial + '\'' +
                 ", passportNumber='" + passportNumber + '\'' +
@@ -53,12 +53,12 @@ public class Student {
         this.studentId = studentId;
     }
 
-    public String getLastName() {
-        return lastName;
+    public String getSurName() {
+        return surName;
     }
 
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
+    public void setSurName(String surName) {
+        this.surName = surName;
     }
 
     public String getFirstName() {
@@ -69,12 +69,12 @@ public class Student {
         this.firstName = firstName;
     }
 
-    public String getMiddleName() {
-        return middleName;
+    public String getPatronymicName() {
+        return patronymicName;
     }
 
-    public void setMiddleName(String middleName) {
-        this.middleName = middleName;
+    public void setPatronymicName(String patronymicName) {
+        this.patronymicName = patronymicName;
     }
 
     public LocalDate getDateOfBirth() {
