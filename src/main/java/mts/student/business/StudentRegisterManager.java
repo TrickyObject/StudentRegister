@@ -3,6 +3,7 @@ package mts.student.business;
 import mts.student.dao.StudentRegisterDao;
 import mts.student.view.StudentRequest;
 import mts.student.view.StudentResponse;
+import org.hibernate.exception.JDBCConnectionException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import javax.persistence.EntityManager;
@@ -41,27 +42,50 @@ public class StudentRegisterManager {
 
         logger.info("findStudent..");
 
+        String hql = HQL_STUDENT_REQUEST;
+
         EntityManager em = getEntityManager();
         StudentResponse response = new StudentResponse();
 
-        String hql = HQL_STUDENT_REQUEST;
+        try {
+            Query query = em.createQuery(hql);
+            setStudentParam(query, request);
 
-        Query query = em.createQuery(hql);
-        setStudentParam(query, request);
+            List resultList = query.getResultList();
 
-        List resultList = query.getResultList();
+            logger.info("Result List: " + resultList.toString());
 
-        logger.info("Result List: " +resultList.toString());
+            if (resultList.size() == 1) {
+                response.setStudying(true);
+            }
 
-        if (resultList.size() == 1) {
-            response.setStudying(true);
+            em.close();
+
+            logger.info("Ответ: " + response.isStudying());
+
+            return response;
+        } catch (IllegalArgumentException e) {
+            logger.info("EXCEPTION:" + e.getMessage());
+            e.printStackTrace();
+            response.setError("Не верный формат аргумента");
+            logger.info("Отправлен отчёт об ошибке..");
+            return response;
+
+        } catch (JDBCConnectionException e) {
+            logger.info("EXCEPTION:" + e.getMessage());
+            e.printStackTrace();
+            response.setError("Нет соединения с БД");
+            logger.info("Отправлен отчёт об ошибке..");
+            return response;
+
+        } catch (Exception e) {
+            logger.info("EXCEPTION:" + e.getMessage());
+            e.printStackTrace();
+            response.setError("Не ошибка сервиса при проверке данных");
+            logger.info("Отправлен отчёт об ошибке..");
+
+            return response;
         }
-
-        em.close();
-
-        logger.info("Ответ: " + response.isStudying());
-
-        return response;
     }
 
 
