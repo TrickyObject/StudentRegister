@@ -16,7 +16,7 @@ public class StudentRegisterDao {
 
     }
 
-    public EntityManager getEntityManager() {
+    public synchronized EntityManager getEntityManager() {
         return this.emf.createEntityManager();
     }
 
